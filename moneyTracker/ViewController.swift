@@ -6,14 +6,26 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var addPurchaseButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+
     }
+    
+    @IBAction func addPurchaseButtonPressed(_ sender: Any) {
+        
+    }
+    
+    
 
-
+    
 }
 

@@ -2,12 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="purchases" optional="YES"/>
         <attribute name="sum" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="assosiatedPurchases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Purchase" inverseName="associatedCategory" inverseEntity="Purchase"/>
     </entity>
     <entity name="Purchase" representedClassName="Purchase" syncable="YES" codeGenerationType="class">
-        <attribute name="category" optional="YES"/>
         <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="associatedCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="assosiatedPurchases" inverseEntity="Category"/>
     </entity>
 </model>
