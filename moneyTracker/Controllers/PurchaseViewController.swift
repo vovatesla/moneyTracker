@@ -35,32 +35,49 @@ class PurchaseViewController: UIViewController {
     //MARK: - Add New Purchase
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
+        var errorMessages = [String: String?]()
+        var newPurchase = Purchase()
         
-        guard let purchaseText = purchaseTextField.text, !purchaseText.isEmpty else {
-            purchaseTextField.placeholder = "Name a purchase"
-            return
+        if let purchaseText = purchaseTextField.text, !purchaseText.isEmpty {
+            newPurchase.name = purchaseText
+        } else {
+            errorMessages["nameError"] = "Name a purchase"
         }
         
-        guard let costText = costTextField.text, !costText.isEmpty else {
-            costTextField.placeholder = "Price?"
-            return
+        if let costText = costTextField.text, !costText.isEmpty {
+            if let costFloat = Float(costText) {
+                newPurchase.cost = costFloat
+            } else {
+                errorMessages["costError"] = "Enter a valid cost"
+            }
+        } else {
+            errorMessages["costError"] = "Enter a cost"
         }
         
-        guard let category = selectedCategory else {
-            categoryButton.setTitle("You must select a category", for: .normal)
-            return
+        if let category = selectedCategory {
+            newPurchase.associatedCategory = category
+        } else {
+            errorMessages["categoryError"] = "Select a category"
         }
         
-//        var purchaseTextFieldCopy = UITextField()
-//        var costTextFieldCopy = UITextField()
-//        
-//        
-//        let newPurchase = Purchase(context: self.context)
-//        newPurchase.name = textField.text!
-//        newPurchase.parentCategory = self.selectedCategory
-//        self.itemArray.append(newItem)
-//        
-//        self.saveItems()
+        if let nameError = errorMessages["nameError"] {
+            purchaseTextField.placeholder = nameError
+        }
+        
+        if let costError = errorMessages["costError"] {
+            costTextField.placeholder = costError
+        }
+        
+        if let categoryError = errorMessages["categoryError"] {
+            categoryButton.setTitle(categoryError, for: .normal)
+        }
+        
+        //        let newPurchase = Purchase(context: self.context)
+        //        newPurchase.name = textField.text!
+        //        newPurchase.parentCategory = self.selectedCategory
+        //        self.itemArray.append(newItem)
+        //
+        //        self.saveItems()
     }
 }
 
