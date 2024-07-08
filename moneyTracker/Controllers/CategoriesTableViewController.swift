@@ -17,6 +17,7 @@ class CategoriesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         loadCategories()
+        
     }
     
     
@@ -31,7 +32,7 @@ class CategoriesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
         cell.textLabel?.text = categories[indexPath.row].name
-    
+        
         return cell
         
     }
@@ -39,30 +40,30 @@ class CategoriesTableViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "goToItems", sender: self)
-//    }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destinationVC = segue.destination as! PurchaseViewController
-//        
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            destinationVC.categoryButton.titleLabel?.text = categories[indexPath.row]
-//        }
-//    }
+    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        performSegue(withIdentifier: "goToItems", sender: self)
+    //    }
+    //    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        let destinationVC = segue.destination as! PurchaseViewController
+    //        
+    //        if let indexPath = tableView.indexPathForSelectedRow {
+    //            destinationVC.categoryButton.titleLabel?.text = categories[indexPath.row]
+    //        }
+    //    }
     
     //MARK: - Data Manipulation Methods
     
-//    func saveCategories() {
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Error saving category \(error)")
-//        }
-//        
-//        tableView.reloadData()
-//        
-//    }
+    func saveCategories() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving category \(error)")
+        }
+        
+        tableView.reloadData()
+        
+    }
     
     func loadCategories() {
         
@@ -70,18 +71,13 @@ class CategoriesTableViewController: UITableViewController {
         
         do{
             categories = try context.fetch(request)
+            print(categories)
         } catch {
             print("Error loading categories \(error)")
         }
-       
+        
         tableView.reloadData()
         
     }
     
-
-    
-    
-    func updateModel(at indexPath: IndexPath) {
-        // Update datamodel
-    }
 }

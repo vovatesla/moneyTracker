@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     var purchaseArray = [Purchase]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     
     @IBOutlet weak var addPurchaseButton: UIButton!
     
@@ -23,7 +23,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-
+        
+     
         
     }
     
@@ -32,7 +33,7 @@ class MainViewController: UIViewController {
     }
     
     
-
+    
     
 }
 
