@@ -57,7 +57,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8x-pK-KmB">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Purchase" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8x-pK-KmB">
                                 <rect key="frame" x="16" y="131" width="361" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -75,6 +75,9 @@
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.61960784310000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="bxd-xi-ayb" eventType="touchUpInside" id="JdJ-IV-pdn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyW-f7-N3o">
                                 <rect key="frame" x="16" y="261" width="361" height="35"/>
@@ -91,6 +94,8 @@
                     </view>
                     <connections>
                         <outlet property="categoryButton" destination="AyW-f7-N3o" id="vh4-Cs-FFl"/>
+                        <outlet property="costTextField" destination="hbX-O7-g0q" id="2dJ-Fo-Ajp"/>
+                        <outlet property="purchaseTextField" destination="b8x-pK-KmB" id="wcx-dv-1IX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWf-HU-wlj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

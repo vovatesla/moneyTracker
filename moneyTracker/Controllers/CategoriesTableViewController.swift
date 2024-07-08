@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class CategoriesTableViewController: UITableViewController {
     
@@ -38,10 +39,10 @@ class CategoriesTableViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToItems", sender: self)
-    }
-    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "goToItems", sender: self)
+//    }
+//    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let destinationVC = segue.destination as! PurchaseViewController
 //        
@@ -49,6 +50,33 @@ class CategoriesTableViewController: UITableViewController {
 //            destinationVC.categoryButton.titleLabel?.text = categories[indexPath.row]
 //        }
 //    }
+    
+    //MARK: - Data Manipulation Methods
+    
+//    func saveCategories() {
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Error saving category \(error)")
+//        }
+//        
+//        tableView.reloadData()
+//        
+//    }
+    
+    func loadCategories() {
+        
+        let request : NSFetchRequest<Category> = Category.fetchRequest()
+        
+        do{
+            categories = try context.fetch(request)
+        } catch {
+            print("Error loading categories \(error)")
+        }
+       
+        tableView.reloadData()
+        
+    }
     
 
     
