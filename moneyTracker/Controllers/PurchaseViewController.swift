@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
-class AddPurchaseViewController: UIViewController {
+class PurchaseViewController: UIViewController {
+    
+    @IBOutlet weak var categoryButton: UIButton!
     
 }
