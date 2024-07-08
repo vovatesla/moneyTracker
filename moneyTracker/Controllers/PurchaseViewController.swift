@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 import CoreData
 
-class PurchaseViewController: UIViewController {
+protocol PurchaseViewControllerDelegate: AnyObject {
+    func update(category: Category)
+}
+
+class PurchaseViewController: UIViewController, PurchaseViewControllerDelegate {
     
     @IBOutlet weak var categoryButton: UIButton!
     
@@ -94,4 +98,11 @@ class PurchaseViewController: UIViewController {
         
         return (newPurchase, errorMessages)
     }
+    
+    //MARK: - PurchaseViewController Delegate Methods
+    func update(category: Category) {
+        selectedCategory = category
+//        categoryButton.setTitle(selectedCategory?.name, for: .normal)
+    }
+    
 }

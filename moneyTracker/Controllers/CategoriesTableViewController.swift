@@ -11,6 +11,8 @@ import CoreData
 
 class CategoriesTableViewController: UITableViewController {
     
+    weak var delegate: PurchaseViewControllerDelegate?
+    
     var categories = [Category]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -40,17 +42,13 @@ class CategoriesTableViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        performSegue(withIdentifier: "goToItems", sender: self)
-    //    }
-    //    
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        let destinationVC = segue.destination as! PurchaseViewController
-    //        
-    //        if let indexPath = tableView.indexPathForSelectedRow {
-    //            destinationVC.categoryButton.titleLabel?.text = categories[indexPath.row]
-    //        }
-    //    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCategory = categories[indexPath.row]
+        delegate?.update(category: selectedCategory)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+
     
     //MARK: - Data Manipulation Methods
     
@@ -81,3 +79,5 @@ class CategoriesTableViewController: UITableViewController {
     }
     
 }
+
+
