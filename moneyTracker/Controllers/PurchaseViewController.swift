@@ -29,13 +29,45 @@ class PurchaseViewController: UIViewController {
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        
     }
     
     //MARK: - Add New Purchase
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        var errorMessages = [String: String?]()
+        let (newPurchase, errorMessages) = checkErrors()
+        
+        if let nameError = errorMessages["nameError"] {
+            purchaseTextField.placeholder = nameError
+        }
+        
+        if let costError = errorMessages["costError"] {
+            costTextField.text = ""
+            costTextField.placeholder = costError
+        }
+        
+        if let categoryError = errorMessages["categoryError"] {
+            categoryButton.setTitle(categoryError, for: .normal)
+        }
+        
+        if errorMessages.isEmpty {
+            saveContext()
+        }
+    }
+    
+    //MARK: - Model Manipulation Methods
+
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+    
+    //MARK: - Error Checking Method
+    
+    func checkErrors() -> (Purchase, [String: String]) {
+        var errorMessages = [String: String]()
         let newPurchase = Purchase(context: self.context)
         
         if let purchaseText = purchaseTextField.text, !purchaseText.isEmpty {
@@ -60,32 +92,6 @@ class PurchaseViewController: UIViewController {
             errorMessages["categoryError"] = "You must select a category"
         }
         
-        if let nameError = errorMessages["nameError"] {
-            purchaseTextField.placeholder = nameError
-        }
-        
-        if let costError = errorMessages["costError"] {
-            costTextField.text = ""
-            costTextField.placeholder = costError
-        }
-        
-        if let categoryError = errorMessages["categoryError"] {
-            categoryButton.setTitle(categoryError, for: .normal)
-        }
-        
-        if errorMessages.isEmpty {
-            saveContext()
-        }
-    }
-    
-    //MARK - Model Manipulation Methods
-
-    func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
-        }
+        return (newPurchase, errorMessages)
     }
 }
-
