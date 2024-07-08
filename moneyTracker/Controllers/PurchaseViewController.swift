@@ -18,7 +18,7 @@ class PurchaseViewController: UIViewController {
     
     var selectedCategory : Category? {
         didSet{
-            categoryButton.titleLabel?.text = selectedCategory?.name
+            categoryButton.setTitle(selectedCategory?.name, for: .normal)
         }
     }
     
@@ -36,7 +36,7 @@ class PurchaseViewController: UIViewController {
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         var errorMessages = [String: String?]()
-        var newPurchase = Purchase()
+        let newPurchase = Purchase(context: self.context)
         
         if let purchaseText = purchaseTextField.text, !purchaseText.isEmpty {
             newPurchase.name = purchaseText
@@ -57,7 +57,7 @@ class PurchaseViewController: UIViewController {
         if let category = selectedCategory {
             newPurchase.associatedCategory = category
         } else {
-            errorMessages["categoryError"] = "Select a category"
+            errorMessages["categoryError"] = "You must select a category"
         }
         
         if let nameError = errorMessages["nameError"] {
@@ -65,6 +65,7 @@ class PurchaseViewController: UIViewController {
         }
         
         if let costError = errorMessages["costError"] {
+            costTextField.text = ""
             costTextField.placeholder = costError
         }
         
@@ -72,12 +73,19 @@ class PurchaseViewController: UIViewController {
             categoryButton.setTitle(categoryError, for: .normal)
         }
         
-        //        let newPurchase = Purchase(context: self.context)
-        //        newPurchase.name = textField.text!
-        //        newPurchase.parentCategory = self.selectedCategory
-        //        self.itemArray.append(newItem)
-        //
-        //        self.saveItems()
+        if errorMessages.isEmpty {
+            saveContext()
+        }
+    }
+    
+    //MARK - Model Manipulation Methods
+
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
     }
 }
 
