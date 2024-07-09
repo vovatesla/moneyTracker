@@ -48,20 +48,19 @@ class CategoriesTableViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods
     
-    func saveCategories() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving category \(error)")
-        }
-        tableView.reloadData()
-    }
+//    func saveCategories() {
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Error saving category \(error)")
+//        }
+//        tableView.reloadData()
+//    }
     
     func loadCategories() {
         let request: NSFetchRequest<Category> = Category.fetchRequest()
         do {
             categories = try context.fetch(request)
-            print(categories)
         } catch {
             print("Error loading categories \(error)")
         }

@@ -7,6 +7,7 @@
     </entity>
     <entity name="Purchase" representedClassName="Purchase" syncable="YES" codeGenerationType="class">
         <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="associatedCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="assosiatedPurchases" inverseEntity="Category"/>
     </entity>
