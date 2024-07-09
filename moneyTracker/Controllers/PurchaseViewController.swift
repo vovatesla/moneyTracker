@@ -9,19 +9,16 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol PurchaseViewControllerDelegate: AnyObject {
-    func update(category: Category)
-}
-
-class PurchaseViewController: UIViewController, PurchaseViewControllerDelegate {
+class PurchaseViewController: UIViewController, CategoryTVCDelegate {
+    
+    var categoriesTVC = CategoriesTableViewController()
     
     @IBOutlet weak var categoryButton: UIButton!
-    
     @IBOutlet weak var purchaseTextField: UITextField!
     @IBOutlet weak var costTextField: UITextField!
     
     var selectedCategory : Category? {
-        didSet{
+        didSet {
             categoryButton.setTitle(selectedCategory?.name, for: .normal)
         }
     }
@@ -32,7 +29,6 @@ class PurchaseViewController: UIViewController, PurchaseViewControllerDelegate {
         super.viewDidLoad()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
     }
     
     //MARK: - Add New Purchase
@@ -100,9 +96,14 @@ class PurchaseViewController: UIViewController, PurchaseViewControllerDelegate {
     }
     
     //MARK: - PurchaseViewController Delegate Methods
-    func update(category: Category) {
+    func update(_ category: Category) {
         selectedCategory = category
-//        categoryButton.setTitle(selectedCategory?.name, for: .normal)
     }
     
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToCategories", let destinationVC = segue.destination as? CategoriesTableViewController {
+            destinationVC.delegate = self
+        }
+    }
 }
