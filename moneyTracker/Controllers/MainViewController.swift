@@ -44,8 +44,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PurchaseCell", for: indexPath)
-        cell.textLabel?.text = purchases[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PurchaseCell", for: indexPath) as! PurchaseCell
+        cell.nameLabel.text = purchases[indexPath.row].name
+        cell.costLabel.text = String(purchases[indexPath.row].cost)
         return cell
     }
     
