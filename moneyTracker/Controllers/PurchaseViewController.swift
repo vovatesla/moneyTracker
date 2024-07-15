@@ -105,20 +105,22 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
 //    }
     
     //MARK: - Error Checking Method
-    
     func checkErrors() -> (Purchase?, [String: String]?) {
+        
         var errorMessages = [String: String]()
-        let purchase = Purchase()
+        var purchaseName: String?
+        var purchaseCost: Float?
+        var purchaseCategory: Category?
         
         if let purchaseText = purchaseTextField.text, !purchaseText.isEmpty {
-            purchase.name = purchaseText
+            purchaseName = purchaseText
         } else {
             errorMessages["nameError"] = "Name a purchase"
         }
         
         if let costText = costTextField.text, !costText.isEmpty {
             if let costFloat = Float(costText) {
-                purchase.cost = costFloat
+                purchaseCost = costFloat
             } else {
                 errorMessages["costError"] = "Enter a valid cost"
             }
@@ -127,19 +129,21 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         }
         
         if let category = selectedCategory {
-            purchase.associatedCategory = category
+            purchaseCategory = category
         } else {
             errorMessages["categoryError"] = "You must select a category"
         }
         
         if errorMessages.isEmpty {
+            let purchase = Purchase(context: context)
+            purchase.name = purchaseName
+            purchase.cost = purchaseCost ?? 0
+            purchase.associatedCategory = purchaseCategory
             return (purchase, nil)
         } else {
             return (nil, errorMessages)
         }
     }
-    
-    
     
     //MARK: - PurchaseViewController Delegate Methods
     func update(_ category: Category) {
