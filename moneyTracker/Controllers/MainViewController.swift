@@ -25,7 +25,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         purchasesTableView.register(
             UINib(nibName: "PurchaseCell", bundle: Bundle.main),
-            forCellReuseIdentifier: "PurchaseCell" // Замените на реальный идентификатор ячейки
+            forCellReuseIdentifier: "PurchaseCell"
         )
         
         loadPurchases()

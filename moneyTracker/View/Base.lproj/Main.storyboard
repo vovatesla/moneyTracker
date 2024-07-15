@@ -37,7 +37,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="addPurchaseButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJL-mV-s7a"/>
-                                    <segue destination="bxd-xi-ayb" kind="show" id="eDI-R6-rVQ"/>
+                                    <segue destination="bxd-xi-ayb" kind="show" identifier="goToPurchaseVC" id="eDI-R6-rVQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -79,6 +79,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Select category" subtitle=""/>
+                                <connections>
+                                    <segue destination="xmu-t7-cDN" kind="show" identifier="goToCategories" id="QLH-zq-Ata"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DyK-3Y-r6G"/>

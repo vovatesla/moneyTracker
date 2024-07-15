@@ -29,7 +29,6 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         super.viewDidLoad()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
     }
     
     //MARK: - Add New Purchase
@@ -53,6 +52,7 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         if errorMessages.isEmpty {
             newPurchase.date = Date()
             saveContext()
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -66,26 +66,43 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         }
     }
     
-//    func deletePurchase(with name: String) {
-//        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-//        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
-//
-//        do {
-//            let result = try context.fetch(fetchRequest)
-//            if result.isEmpty {
-//                print("No purchases found with name \(name)")
-//            } else {
-//                let resultData = result as [Purchase]
-//                for purchase in resultData {
-//                    print(purchase.name ?? "No name")
-//                    context.delete(purchase)
-//                    saveContext()
-//                }
-//            }
-//        } catch {
-//            print("Failed to fetch purchases: \(error)")
-//        }
-//    }
+    //    func deletePurchase(with name: String) {
+    //        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+    //        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+    //
+    //        do {
+    //            let result = try context.fetch(fetchRequest)
+    //            if result.isEmpty {
+    //                print("No purchases found with name \(name)")
+    //            } else {
+    //                let resultData = result as [Purchase]
+    //                for purchase in resultData {
+    //                    print(purchase.name ?? "No name")
+    //                    context.delete(purchase)
+    //                    saveContext()
+    //                }
+    //            }
+    //        } catch {
+    //            print("Failed to fetch purchases: \(error)")
+    //        }
+    //    }
+    
+    func deleteAllPurchases() {
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        do {
+            let result = try context.fetch(fetchRequest)
+            if result.isEmpty {
+            } else {
+                let resultData = result as [Purchase]
+                for purchase in resultData {
+                    context.delete(purchase)
+                    saveContext()
+                }
+            }
+        } catch {
+            print("Failed to fetch purchases: \(error)")
+        }
+    }
     
     //MARK: - Error Checking Method
     

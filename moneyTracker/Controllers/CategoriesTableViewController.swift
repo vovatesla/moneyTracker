@@ -39,7 +39,6 @@ class CategoriesTableViewController: UITableViewController {
     }
     
     //MARK: - TableView Delegate Methods
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCategory = categories[indexPath.row]
         delegate?.update(selectedCategory)
@@ -48,14 +47,14 @@ class CategoriesTableViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods
     
-//    func saveCategories() {
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Error saving category \(error)")
-//        }
-//        tableView.reloadData()
-//    }
+    //    func saveCategories() {
+    //        do {
+    //            try context.save()
+    //        } catch {
+    //            print("Error saving category \(error)")
+    //        }
+    //        tableView.reloadData()
+    //    }
     
     func loadCategories() {
         let request: NSFetchRequest<Category> = Category.fetchRequest()
