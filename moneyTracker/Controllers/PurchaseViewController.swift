@@ -36,23 +36,23 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let (newPurchase, errorMessages) = checkErrors()
         
-        if let nameError = errorMessages["nameError"] {
-            purchaseTextField.placeholder = nameError
-        }
-        
-        if let costError = errorMessages["costError"] {
-            costTextField.text = ""
-            costTextField.placeholder = costError
-        }
-        
-        if let categoryError = errorMessages["categoryError"] {
-            categoryButton.setTitle(categoryError, for: .normal)
-        }
-        
-        if errorMessages.isEmpty {
-            newPurchase.date = Date()
-            saveContext()
-            self.navigationController?.popViewController(animated: true)
+        if let errorMessages {
+            if let nameError = errorMessages["nameError"] {
+                purchaseTextField.placeholder = nameError
+            }
+            if let costError = errorMessages["costError"] {
+                costTextField.text = ""
+                costTextField.placeholder = costError
+            }
+            if let categoryError = errorMessages["categoryError"] {
+                categoryButton.setTitle(categoryError, for: .normal)
+            }
+        } else {
+            if let newPurchase {
+                newPurchase.date = Date()
+                saveContext()
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -87,38 +87,38 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
     //        }
     //    }
     
-    func deleteAllPurchases() {
-        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        do {
-            let result = try context.fetch(fetchRequest)
-            if result.isEmpty {
-            } else {
-                let resultData = result as [Purchase]
-                for purchase in resultData {
-                    context.delete(purchase)
-                    saveContext()
-                }
-            }
-        } catch {
-            print("Failed to fetch purchases: \(error)")
-        }
-    }
+//    func deleteAllPurchases() {
+//        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+//        do {
+//            let result = try context.fetch(fetchRequest)
+//            if result.isEmpty {
+//            } else {
+//                let resultData = result as [Purchase]
+//                for purchase in resultData {
+//                    context.delete(purchase)
+//                    saveContext()
+//                }
+//            }
+//        } catch {
+//            print("Failed to fetch purchases: \(error)")
+//        }
+//    }
     
     //MARK: - Error Checking Method
     
-    func checkErrors() -> (Purchase, [String: String]) {
+    func checkErrors() -> (Purchase?, [String: String]?) {
         var errorMessages = [String: String]()
-        let newPurchase = Purchase(context: self.context)
+        let purchase = Purchase()
         
         if let purchaseText = purchaseTextField.text, !purchaseText.isEmpty {
-            newPurchase.name = purchaseText
+            purchase.name = purchaseText
         } else {
             errorMessages["nameError"] = "Name a purchase"
         }
         
         if let costText = costTextField.text, !costText.isEmpty {
             if let costFloat = Float(costText) {
-                newPurchase.cost = costFloat
+                purchase.cost = costFloat
             } else {
                 errorMessages["costError"] = "Enter a valid cost"
             }
@@ -127,13 +127,19 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         }
         
         if let category = selectedCategory {
-            newPurchase.associatedCategory = category
+            purchase.associatedCategory = category
         } else {
             errorMessages["categoryError"] = "You must select a category"
         }
         
-        return (newPurchase, errorMessages)
+        if errorMessages.isEmpty {
+            return (purchase, nil)
+        } else {
+            return (nil, errorMessages)
+        }
     }
+    
+    
     
     //MARK: - PurchaseViewController Delegate Methods
     func update(_ category: Category) {
