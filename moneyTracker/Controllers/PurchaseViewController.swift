@@ -51,7 +51,7 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
             if let newPurchase {
                 newPurchase.date = Date()
                 saveContext()
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
