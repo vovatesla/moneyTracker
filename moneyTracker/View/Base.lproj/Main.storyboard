@@ -37,7 +37,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="addPurchaseButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJL-mV-s7a"/>
-                                    <segue destination="bxd-xi-ayb" kind="show" identifier="goToPurchaseVC" id="eDI-R6-rVQ"/>
+                                    <segue destination="wnw-yC-i2x" kind="show" identifier="goToPurchaseVC" id="eDI-R6-rVQ"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJr-qE-gGI">
@@ -74,7 +74,7 @@
             <objects>
                 <viewController id="bxd-xi-ayb" customClass="PurchaseViewController" customModule="moneyTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rHV-Qk-hNU">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Purchase" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8x-pK-KmB">
@@ -105,7 +105,7 @@
                     <navigationItem key="navigationItem" id="kXW-qR-H7S">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ge9-x6-a5G">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="MNf-Wh-pcj">
-                                <rect key="frame" x="322" y="4.6666666666666679" width="55" height="35"/>
+                                <rect key="frame" x="322" y="10.666666666666664" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.61960784310000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
@@ -124,14 +124,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWf-HU-wlj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1979.3893129770991" y="-22.535211267605636"/>
+            <point key="canvasLocation" x="2906.1068702290077" y="-22.535211267605636"/>
         </scene>
         <!--Categories Table View Controller-->
         <scene sceneID="ar1-KO-MwE">
             <objects>
                 <tableViewController id="xmu-t7-cDN" customClass="CategoriesTableViewController" customModule="moneyTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="fY3-U6-9fk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -153,25 +153,26 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYE-f3-XG8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2892.3664122137402" y="-23.239436619718312"/>
+            <point key="canvasLocation" x="3819.0839694656488" y="-23.239436619718312"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Ve0-BF-joG">
+        <scene sceneID="HB1-LZ-Tfw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BGQ-9b-g0j" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wnw-yC-i2x" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="crO-ke-caP">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationItem key="navigationItem" id="7DL-pE-Flb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IXT-DK-aOs">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gAE-kW-WTt"/>
+                        <segue destination="bxd-xi-ayb" kind="relationship" relationship="rootViewController" id="EFX-Us-ajl"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mTf-Dn-f0T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hmH-16-pet" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.69465648854961" y="-23.239436619718312"/>
+            <point key="canvasLocation" x="1979.3893129770991" y="-22.535211267605636"/>
         </scene>
     </scenes>
     <resources>
