@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 import CoreData
 
+
 class PurchaseViewController: UIViewController, CategoryTVCDelegate {
-    
+        
     var categoriesTVC = CategoriesTableViewController()
     
     @IBOutlet weak var categoryButton: UIButton!
