@@ -109,7 +109,7 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         
         var errorMessages = [String: String]()
         var purchaseName: String?
-        var purchaseCost: Float?
+        var purchaseCost: Double?
         var purchaseCategory: Category?
         
         if let purchaseText = purchaseTextField.text, !purchaseText.isEmpty {
@@ -119,8 +119,8 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         }
         
         if let costText = costTextField.text, !costText.isEmpty {
-            if let costFloat = Float(costText) {
-                purchaseCost = costFloat
+            if let costDouble = Double(costText) {
+                purchaseCost = costDouble
             } else {
                 errorMessages["costError"] = "Enter a valid cost"
             }

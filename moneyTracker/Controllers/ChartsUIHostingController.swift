@@ -8,27 +8,57 @@
 import UIKit
 import SwiftUI
 import Charts
-
-class ChartsUIHostingController: UIHostingController<ChartsUIView> {
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder, rootView: ChartsUIView())
-    }
-}
+import CoreData
 
 struct monthlyExpenses {
     var category: String
     var amount: Double
 }
 
-let data: [monthlyExpenses] = [
-    .init(category: "A", amount: 5),
-    .init(category: "B", amount: 9),
-    .init(category: "C", amount: 7)
-]
+class ChartsUIHostingController: UIHostingController<ChartsUIView> {
+    
+    required init?(coder aDecoder: NSCoder) {
+        let initialData = [monthlyExpenses(category: "Loading", amount: 0)]
+        let initialRootView = ChartsUIView(data: initialData, todayExpenses: "0")
+        super.init(coder: aDecoder, rootView: initialRootView)
+        updateViewWithData()
+    }
+    
+    func updateViewWithData() {
+        let data = fetchMonthlyExpenses()
+        let todayExpenses = calculateTodayExpenses(from: data)
+        self.rootView = ChartsUIView(data: data, todayExpenses: todayExpenses)
+    }
 
-let todayExpenses = "300"
+    func fetchMonthlyExpenses() -> [monthlyExpenses] {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+
+        do {
+            let purchases = try context.fetch(fetchRequest)
+            let groupedPurchases = Dictionary(grouping: purchases, by: { $0.associatedCategory?.name ?? "Unknown" })
+            return groupedPurchases.map { (category, purchases) in
+                monthlyExpenses(category: category, amount: purchases.reduce(0) { $0 + $1.cost })
+            }
+        } catch {
+            print("Failed to fetch data: \(error)")
+            return []
+        }
+    }
+
+    func calculateTodayExpenses(from data: [monthlyExpenses]) -> String {
+        let todayExpenses = data.reduce(0) { $0 + $1.amount }
+        return String(format: "%.2f", todayExpenses)
+        
+        // implement todayExpensesCounter
+    }
+}
 
 struct ChartsUIView: View {
+    var data: [monthlyExpenses]
+    var todayExpenses: String
+    
+    
     var body: some View {
         VStack {
             Chart(data, id: \.category) { data in
@@ -60,7 +90,12 @@ struct ChartsUIView: View {
 }
 
 #Preview {
-    ChartsUIView()
+    ChartsUIView(data: [
+        .init(category: "A", amount: 5),
+        .init(category: "B", amount: 9),
+        .init(category: "C", amount: 7)
+    
+    ], todayExpenses: "300")
 }
 
 
