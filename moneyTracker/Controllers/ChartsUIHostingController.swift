@@ -30,29 +30,32 @@ let todayExpenses = "300"
 
 struct ChartsUIView: View {
     var body: some View {
-        Chart(data, id: \.category) {data in
-            SectorMark(
-                angle: .value("Value", data.amount),
-                innerRadius: .ratio(0.618),
-                angularInset: 1.5
-            )
-            .cornerRadius(5)
-            .foregroundStyle(by: .value("Product category", data.category))
-        }
-        .chartBackground { chartProxy in
-            GeometryReader { geometry in
-                let frame = geometry[chartProxy.plotAreaFrame]
-                VStack {
-                    Text("Spend today")
-                        .font(.callout)
-                        .foregroundStyle(.secondary)
-                    Text(todayExpenses)
-                        .font(.title2.bold())
-                        .foregroundColor(.primary)
+        VStack {
+            Chart(data, id: \.category) { data in
+                SectorMark(
+                    angle: .value("Value", data.amount),
+                    innerRadius: .ratio(0.618),
+                    angularInset: 1.5
+                )
+                .cornerRadius(5)
+                .foregroundStyle(by: .value("Product category", data.category))
+            }
+            .chartBackground { chartProxy in
+                GeometryReader { geometry in
+                    let frame = geometry[chartProxy.plotAreaFrame]
+                    VStack {
+                        Text("Spend today")
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                        Text(todayExpenses)
+                            .font(.title2.bold())
+                            .foregroundColor(.primary)
+                    }
+                    .position(x: frame.midX, y: frame.midY)
                 }
-                .position(x: frame.midX, y: frame.midY)
             }
         }
+//        .background(Color(red: 145 / 255, green: 221 / 255, blue: 207 / 255))
     }
 }
 
