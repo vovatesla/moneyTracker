@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C41AA6FF2C4948DA00DA01CD /* MainUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41AA6FE2C4948DA00DA01CD /* MainUIViewController.swift */; };
+		C41AA7012C49492400DA01CD /* ChartsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41AA7002C49492400DA01CD /* ChartsUIView.swift */; };
 		C46FFD342C3ADB880050042C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46FFD332C3ADB880050042C /* AppDelegate.swift */; };
 		C46FFD362C3ADB880050042C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46FFD352C3ADB880050042C /* SceneDelegate.swift */; };
 		C46FFD382C3ADB880050042C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46FFD372C3ADB880050042C /* MainViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C41AA6FE2C4948DA00DA01CD /* MainUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIViewController.swift; sourceTree = "<group>"; };
+		C41AA7002C49492400DA01CD /* ChartsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsUIView.swift; sourceTree = "<group>"; };
 		C46FFD302C3ADB880050042C /* moneyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moneyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46FFD332C3ADB880050042C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C46FFD352C3ADB880050042C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				C46FFD372C3ADB880050042C /* MainViewController.swift */,
+				C41AA6FE2C4948DA00DA01CD /* MainUIViewController.swift */,
 				C46FFD4A2C3AF7610050042C /* PurchaseViewController.swift */,
 				C46FFD4D2C3AFA9B0050042C /* CategoriesTableViewController.swift */,
 			);
@@ -116,6 +121,7 @@
 		C472FBD82C3DC558002DAA1D /* PurchaseCell */ = {
 			isa = PBXGroup;
 			children = (
+				C41AA7002C49492400DA01CD /* ChartsUIView.swift */,
 				C472FBD42C3DC53F002DAA1D /* PurchaseCell.swift */,
 				C472FBD52C3DC53F002DAA1D /* PurchaseCell.xib */,
 			);
@@ -196,11 +202,13 @@
 			files = (
 				C472FBD62C3DC53F002DAA1D /* PurchaseCell.swift in Sources */,
 				C46FFD4B2C3AF7610050042C /* PurchaseViewController.swift in Sources */,
+				C41AA7012C49492400DA01CD /* ChartsUIView.swift in Sources */,
 				C46FFD382C3ADB880050042C /* MainViewController.swift in Sources */,
 				C46FFD4E2C3AFA9B0050042C /* CategoriesTableViewController.swift in Sources */,
 				C46FFD3E2C3ADB880050042C /* moneyTracker.xcdatamodeld in Sources */,
 				C46FFD342C3ADB880050042C /* AppDelegate.swift in Sources */,
 				C46FFD362C3ADB880050042C /* SceneDelegate.swift in Sources */,
+				C41AA6FF2C4948DA00DA01CD /* MainUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
