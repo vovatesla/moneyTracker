@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="1066.4122137404579" y="-23.239436619718312"/>
         </scene>
-        <!--MainUI View Controller-->
+        <!--ChartsUI Hosting Controller-->
         <scene sceneID="5LA-Zb-8Ys">
             <objects>
-                <hostingController id="YwL-6H-CL6" customClass="MainUIViewController" customModule="moneyTracker" customModuleProvider="target" sceneMemberID="viewController"/>
+                <hostingController id="YwL-6H-CL6" customClass="ChartsUIHostingController" customModule="moneyTracker" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viP-PK-m4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1066" y="-734"/>
@@ -172,20 +172,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTf-Dn-f0T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="-23.239436619718312"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ooB-rP-W7s">
-            <objects>
-                <viewController id="ALe-Qo-FMg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4Gj-vu-j1N">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dT8-FK-p7m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2724" y="-788"/>
         </scene>
     </scenes>
     <resources>

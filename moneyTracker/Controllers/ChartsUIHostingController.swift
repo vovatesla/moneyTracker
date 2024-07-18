@@ -1,12 +1,19 @@
 //
-//  ChartsUIView.swift
-//  swiftUI Charts
+//  MainUIViewController.swift
+//  moneyTracker
 //
-//  Created by Бадретдинов Владимир on 16.07.2024.
+//  Created by Бадретдинов Владимир on 18.07.2024.
 //
 
+import UIKit
 import SwiftUI
 import Charts
+
+class ChartsUIHostingController: UIHostingController<ChartsUIView> {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: ChartsUIView())
+    }
+}
 
 struct monthlyExpenses {
     var category: String
@@ -23,9 +30,6 @@ let todayExpenses = "300"
 
 struct ChartsUIView: View {
     var body: some View {
-        VStack {
-            Text("HI")
-        }
         Chart(data, id: \.category) {data in
             SectorMark(
                 angle: .value("Value", data.amount),
@@ -55,3 +59,7 @@ struct ChartsUIView: View {
 #Preview {
     ChartsUIView()
 }
+
+
+
+

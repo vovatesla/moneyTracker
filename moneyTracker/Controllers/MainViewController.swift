@@ -34,7 +34,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func addPurchaseButtonPressed(_ sender: Any) {
-        
+        //xcode stop crying 
     }
     
     //MARK: - TableView Datasource Methods
