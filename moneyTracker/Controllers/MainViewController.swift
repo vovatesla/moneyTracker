@@ -8,7 +8,26 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PurchaseVCDelegate {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPurchaseVC",
+           let destinationVC = segue.destination as? PurchaseViewController {
+            destinationVC.delegate = self
+            print("Delegate set in MainViewController")
+        }
+    }
+    
+    func update(_ newPurchase: Purchase) {
+        DispatchQueue.main.async {
+            self.purchases.append(newPurchase)
+            print("Purchase appended: \(newPurchase.name ?? "No name")")
+            self.purchasesTableView.reloadData()
+            print("Purchases reloaded, count: \(self.purchases.count)")
+
+        }
+    } 
+    
     
     var purchases = [Purchase]()
     
@@ -16,6 +35,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var purchasesTableView: UITableView!
     @IBOutlet weak var addPurchaseButton: UIButton!
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()

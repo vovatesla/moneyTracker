@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol CategoryTVCDelegate {
+protocol CatrgoryTVCDelegate {
     func update(_ category: Category)
 }
 
 class CategoriesTableViewController: UITableViewController {
     
-    var delegate: CategoryTVCDelegate?
+    var delegate: CatrgoryTVCDelegate?
     
     var categories = [Category]()
     

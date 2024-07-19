@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 import CoreData
 
+protocol PurchaseVCDelegate {
+    func update(_ newPurchase: Purchase)
+}
 
-class PurchaseViewController: UIViewController, CategoryTVCDelegate {
+class PurchaseViewController: UIViewController, CatrgoryTVCDelegate {
+    
+    var delegate: PurchaseVCDelegate?
         
     var categoriesTVC = CategoriesTableViewController()
     
@@ -52,6 +57,9 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
             if let newPurchase {
                 newPurchase.date = Date()
                 saveContext()
+                print("New purchase created: \(newPurchase.name ?? "No name")")
+                delegate?.update(newPurchase)
+                print("Delegate update method called")
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -146,7 +154,7 @@ class PurchaseViewController: UIViewController, CategoryTVCDelegate {
         }
     }
     
-    //MARK: - PurchaseViewController Delegate Methods
+    //MARK: - CatrgoryTVC Delegate Methods
     func update(_ category: Category) {
         selectedCategory = category
     }

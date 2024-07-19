@@ -67,7 +67,7 @@
                 <hostingController id="YwL-6H-CL6" customClass="ChartsUIHostingController" customModule="moneyTracker" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viP-PK-m4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066" y="-734"/>
+            <point key="canvasLocation" x="1066" y="-674"/>
         </scene>
         <!--Purchase View Controller-->
         <scene sceneID="Pkh-JV-AAI">
