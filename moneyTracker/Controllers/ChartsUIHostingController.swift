@@ -74,7 +74,7 @@ struct ChartsUIView: View {
                 GeometryReader { geometry in
                     let frame = geometry[chartProxy.plotAreaFrame]
                     VStack {
-                        Text("Spend today")
+                        Text("Spent in total")
                             .font(.callout)
                             .foregroundStyle(.secondary)
                         Text(todayExpenses)

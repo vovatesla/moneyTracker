@@ -39,7 +39,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         purchasesTableView.delegate = self
         purchasesTableView.dataSource = self
         
